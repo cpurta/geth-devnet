@@ -12,13 +12,10 @@ RUN apt-get update && \
 
 RUN mkdir -p /ethereum/data
 
-ADD genesis.json /ethereum/genesis.json
-ADD setup.sh /ethereum/
+ADD . /ethereum/
 
 EXPOSE 8545 8555 8080 6060
 
-RUN /ethereum/setup.sh
+WORKDIR /ethereum
 
-RUN geth version
-
-ENTRYPOINT ["geth", "--rpc", "--rpcaddr", "0.0.0.0", "--rpccorsdomain", "*", "--rpcapi", "db,eth,net,web3,personal,miner", "--networkid", "909090", "--unlock", "0","--password", "/ethereum/.accountpassword", "--mine", "--minerthreads", "1", "--targetgaslimit", "900000000", "--nodiscover"]
+CMD ./start-node.sh
