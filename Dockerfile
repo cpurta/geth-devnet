@@ -1,14 +1,8 @@
-FROM ubuntu:xenial
+FROM ethereum/client-go:v1.7.3
 MAINTAINER Chris Purta <cpurta@gmail.com>
 
-RUN apt-get update && \
-    apt-get -y -qq upgrade && \
-    apt-get -y -qq install software-properties-common && \
-    add-apt-repository ppa:ethereum/ethereum && \
-    apt-get update && \
-    apt-get -y -qq install geth solc && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk update && \
+    apk add bash curl
 
 RUN mkdir -p /ethereum/data
 
@@ -18,4 +12,4 @@ EXPOSE 8545 8555 8080 6060
 
 WORKDIR /ethereum
 
-CMD ./start-node.sh
+ENTRYPOINT ["./start-node.sh"]

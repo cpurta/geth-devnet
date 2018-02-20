@@ -16,7 +16,7 @@ geth \
 --datadir $DATADIR \
 --networkid 454545 \
 --etherbase $ETHERBASE \
---targetgaslimit '10000000' \
+--targetgaslimit '6500000' \
 init ./genesis.json
 
 geth \
@@ -27,5 +27,5 @@ geth \
 --datadir $DATADIR \
 --networkid 454545 \
 --etherbase $ETHERBASE \
---targetgaslimit '10000000' \
+--targetgaslimit '6500000' \
 js ./run-dev-node.js
