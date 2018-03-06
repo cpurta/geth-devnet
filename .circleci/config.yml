@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  - build:
+      filters:
+        tags:
+          only: /.*/
+      machine: true
+      steps:
+        - checkout
+        # build all docker images for tags
+        - run:
+            name: Creating image artifacts
+            command: |
+              docker build --build-arg DEV_CHAIN=false -f Dockerfile -t purta/geth-devnet:$CIRCLE_TAG
+              docker build --build-arg DEV_CHAIN=true -f Dockerfile -t purta/geth-devnet:${CIRCLE_TAG}-instantseal
+
+  - deploy:
+      requires:
+        - build
+      filters:
+        tags:
+          only: /^v.*/
+        branches:
+          ignore: /.*/
+      steps:
+        # publish all docker images to docker hub
+        - run:
+            name: Publish images
+            command: |
+              docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+              docker push purta/geth-devnet:$CIRCLE_TAG
+              docker push purta/geth-devnet:${CIRCLE_TAG}-instantseal
