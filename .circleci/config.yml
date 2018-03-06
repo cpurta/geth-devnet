@@ -22,6 +22,7 @@ jobs:
         only: /^v.*/
       branches:
         ignore: /.*/
+    machine: true
     steps:
       # publish all docker images to docker hub
       - run:
