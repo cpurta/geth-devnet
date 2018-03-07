@@ -1,5 +1,7 @@
 # geth-devnet
 
+[![CircleCI](https://circleci.com/gh/cpurta/geth-devnet/tree/master.svg?style=svg)](https://circleci.com/gh/cpurta/geth-devnet/tree/master)
+
 This is simple repo to create a geth node running private development network to
 be used for testing dApps. This holds all the needed code and Dockerfile(s) to
 create the base image.
