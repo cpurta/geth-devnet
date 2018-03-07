@@ -13,8 +13,8 @@ jobs:
       - run:
           name: Creating image artifacts
           command: |
-            docker build --build-arg DEV_CHAIN=false -f Dockerfile -t purta/geth-devnet:${CIRCLE_TAG:-latest}
-            docker build --build-arg DEV_CHAIN=true -f Dockerfile -t purta/geth-devnet:${CIRCLE_TAG:-latest}-instantseal
+            docker build --build-arg DEV_CHAIN=false -f Dockerfile -t purta/geth-devnet:${CIRCLE_TAG:-latest} .
+            docker build --build-arg DEV_CHAIN=true -f Dockerfile -t purta/geth-devnet:${CIRCLE_TAG:-latest}-instantseal .
 
   deploy:
     requires:
