@@ -26,13 +26,13 @@ docker argument when building the image.
 
 To build the image just run the following command:
 ```
-$ docker build --build-arg DEV_CHAIN=false -f Dockerfile -t geth-devnet:<tag_name>
+$ docker build --build-arg DEV_CHAIN=false -f Dockerfile -t geth-devnet:<tag_name> .
 ```
 
 ### Instant seal development network
 
 ```
-$ docker build --build-arg DEV_CHAIN=true -f Dockerfile -t geth-devnet:<tag_name>
+$ docker build --build-arg DEV_CHAIN=true -f Dockerfile -t geth-devnet:<tag_name> .
 ```
 
 ## Running
